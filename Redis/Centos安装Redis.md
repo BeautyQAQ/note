@@ -63,6 +63,15 @@ vi redis.conf
 ./redis-server redis.conf
 ```
 
+设置远程链接
+
+```shell
+# 注释这行
+# bind 127.0.0.1
+# 修改设置protected-mode为 no
+protected-mode no
+```
+
 ## 六、设置开机启动
 
 添加开机启动服务
