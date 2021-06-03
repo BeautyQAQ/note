@@ -5,15 +5,14 @@ def isFile(filePath,f):#批量读取文件
     # 打印文件名
     print("修改前文件名:"+filename)
     split=os.path.splitext(filename)#拆分文件名和扩展名
-
     # 如果文件名为result.txt,则清空里面的内容,作为结果文件
-    if filename == "result.txt":
-        f.truncate()
+    # if filename == "result.txt":
+    #     f.truncate()
 
     # 拓展名为txt,注意:不包含.py
     if split[1] == ".txt" and split[1]!=".py" and filename != "result.txt":
         print("文件路径:"+filePath)
-        for line in open(filePath,encoding='gbk', errors='ignore'):
+        for line in open(filePath,encoding='UTF-8', errors='ignore'):
             # print(str(line))
             f.writelines(line)
         f.write('\n')
@@ -37,8 +36,7 @@ rootDir=os.getcwd()#根目录--工作目录
 
 pathDir =  os.listdir(rootDir)#列出根目录下所有内容
 
-f=open('result.txt','r+')
-
+f=open('result.txt','w+')
 
 for allDir in pathDir:#遍历列表
     filepath=os.path.join(rootDir,allDir)#文件路径合成
