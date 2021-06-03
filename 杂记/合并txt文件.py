@@ -12,7 +12,7 @@ def isFile(filePath,f):#批量读取文件
     # 拓展名为txt,注意:不包含.py
     if split[1] == ".txt" and split[1]!=".py" and filename != "result.txt":
         print("文件路径:"+filePath)
-        for line in open(filePath,encoding='UTF-8', errors='ignore'):
+        for line in open(filePath,encoding='utf-8', errors='ignore'):
             # print(str(line))
             f.writelines(line)
         f.write('\n')
@@ -36,7 +36,7 @@ rootDir=os.getcwd()#根目录--工作目录
 
 pathDir =  os.listdir(rootDir)#列出根目录下所有内容
 
-f=open('result.txt','w+')
+f=open('result.txt','w+',encoding='utf-8')
 
 for allDir in pathDir:#遍历列表
     filepath=os.path.join(rootDir,allDir)#文件路径合成
