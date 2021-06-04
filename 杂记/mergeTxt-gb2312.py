@@ -47,7 +47,7 @@ for allDir in pathDir:#遍历列表
     else:
         openDir(filepath,f)
 
-f.close();
+f.close()
 
 file1=open('resultWithSpace.txt','r',encoding='gb2312')
 file2 = open('result.txt', 'w+', encoding='gb2312') # 生成没有空行的文件
