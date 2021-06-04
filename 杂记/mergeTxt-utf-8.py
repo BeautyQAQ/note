@@ -10,11 +10,12 @@ def isFile(filePath,f):#批量读取文件
     #     f.truncate()
 
     # 拓展名为txt,注意:不包含.py
-    if split[1] == ".txt" and split[1]!=".py" and filename != "result.txt":
+    if split[1] == ".txt" and split[1]!=".py" and filename != "result.txt" and filename != "resultWithSpace.txt":
         print("文件路径:"+filePath)
         for line in open(filePath,encoding='utf-8', errors='ignore'):
             # print(str(line))
             f.writelines(line)
+            f.writelines('\n')
 
 def openDir(filePath,f):#递归文件夹
     pathDir=os.listdir(filePath)#返回包含的文件或文件夹的名字的列表
@@ -35,7 +36,7 @@ rootDir=os.getcwd()#根目录--工作目录
 
 pathDir =  os.listdir(rootDir)#列出根目录下所有内容
 
-f=open('result.txt','w+',encoding='utf-8')
+f=open('resultWithSpace.txt','w+',encoding='utf-8')
 
 for allDir in pathDir:#遍历列表
     filepath=os.path.join(rootDir,allDir)#文件路径合成
@@ -45,5 +46,24 @@ for allDir in pathDir:#遍历列表
         isFile(filepath,f)
     else:
         openDir(filepath,f)
+
+f.close()
+
+file1=open('resultWithSpace.txt','r',encoding='utf-8')
+file2 = open('result.txt', 'w+', encoding='utf-8') # 生成没有空行的文件
+try:
+    for line in file1.readlines():
+        if line == '\n':
+            line = line.strip("\n")
+        file2.write(line)
+finally:
+    file1.close()
+    file2.close()
+
+
+if os.path.exists("resultWithSpace.txt"):
+  os.remove("resultWithSpace.txt")
+else:
+  print("文件不存在")
 
 input("Enter Pass")
