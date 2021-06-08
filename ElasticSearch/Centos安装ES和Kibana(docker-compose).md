@@ -33,7 +33,7 @@ es/
 
 手动创建docker网络
 ```shell
-docker network create elk
+docker network create how
 ```
 
 es.yml内容
