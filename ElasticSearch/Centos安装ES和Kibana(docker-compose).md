@@ -64,6 +64,7 @@ services:
       - ./plugins:/usr/share/elasticsearch/plugins
     ports:
       - 9200:9200
+      - 9300:9300
 
 networks:
   default:
