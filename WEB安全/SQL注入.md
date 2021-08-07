@@ -30,3 +30,15 @@
 1. 通过报错注入配合页面查看数据回显
 1. 通过union联合查询拿到数据库版本,数据库名,表名,列名等信息
 1. 查询出数据
+
+
+#### 封神台SQL注入靶场
+
+基本步骤同墨者学院靶场 
+
+**不同之处:**
+- 使用`union`联合查询前, 不是用`id=-1`去过滤掉结果集, 后台应该有对id不存在时做了处理, 此时, 使用`id=1 and id=2`去`union`新的结果集, 过滤掉前面的结果
+
+例:`id=1 and id=2 union select 1,group_concat(table_name) from information_schema.tables where table_schema='maoshe'`
+
+![数据库名称查询结果](images/2021-08-07-14-32-44.png)
