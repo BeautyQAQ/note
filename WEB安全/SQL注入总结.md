@@ -9,3 +9,10 @@
     - `union select group_concat(table_name) from information_schema.tables where table_schema=database()`
     - `union select group_concat(column_name) from information_schema.columns where table_name='table_name'`
 - 根据列名查询数据, 注意limit
+
+
+
+
+封神台SQL注入-HEADER注入
+https://www.freesion.com/article/79131245351/
+
