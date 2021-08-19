@@ -16,3 +16,6 @@
 封神台SQL注入-HEADER注入
 https://www.freesion.com/article/79131245351/
 
+封神台SQL注入-盲注
+https://www.pianshen.com/article/12321993968/
+
