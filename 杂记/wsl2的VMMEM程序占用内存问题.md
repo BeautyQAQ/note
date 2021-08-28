@@ -33,3 +33,6 @@ echo 3 > /proc/sys/vm/drop_caches
 ```
 可以设置成定时任务,每隔一段时间释放一次.
 
+
+`ubuntu config --default-user root`    -- ubuntu表示wsl程序的名字,配置这个命令,可以让wsl以默认root用户登录,解决vscode连接wsl时部分文件夹没有权限问题  
+
