@@ -99,3 +99,6 @@ https://www.pianshen.com/article/49251993962/
 
 封神台SQL注入-宽字节注入
 https://www.pianshen.com/article/47421993964/
+
+
+工具: Nmap ,dicsearch
