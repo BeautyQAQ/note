@@ -101,4 +101,4 @@ https://www.pianshen.com/article/49251993962/
 https://www.pianshen.com/article/47421993964/
 
 
-工具: Nmap ,dicsearch
+工具: Nmap--支持密码破解,但是不专业 ;dicsearch--扫描目录  ;  hydra--专业的密码破解
