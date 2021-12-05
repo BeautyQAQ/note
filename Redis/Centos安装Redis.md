@@ -55,7 +55,7 @@ cp /usr/local/redis-5.0.3/redis.conf /usr/local/redis/bin/
 vi redis.conf
 ```
 
-![修改daemonize yes](images/2020-11-06-19-40-54.png)
+![修改daemonize yes](https://study-note-huang.oss-cn-beijing.aliyuncs.com/img/2020-11-06-19-40-54.png)
 
 后台启动
 
@@ -114,7 +114,7 @@ ln -s /usr/local/redis/bin/redis-cli /usr/bin/redis
 ```
 
 测试 redis  
-![测试结果](images/2020-11-06-19-47-15.png)
+![测试结果](https://study-note-huang.oss-cn-beijing.aliyuncs.com/img/2020-11-06-19-47-15.png)
 
 ### 服务操作命令
 

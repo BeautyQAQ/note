@@ -42,7 +42,7 @@
 
 例:`id=1 and id=2 union select 1,group_concat(table_name) from information_schema.tables where table_schema='maoshe'`
 
-![数据库名称查询结果](images/2021-08-07-14-32-44.png)
+![数据库名称查询结果](https://study-note-huang.oss-cn-beijing.aliyuncs.com/img/2021-08-07-14-32-44.png)
 
 #### 封神台SQL注入靶场2
 
@@ -52,13 +52,13 @@
 - 使用`id=-1`和`id=1 and id=2`都报错, 这里无法触发注入
 - 直接`order by 10`查询出有10个字段
 - 猜测存在表名字为`admin`的表,当我们使用`union select 1,2,3,4,5,6,7,8,9,10 from admin`时, 出现报错, 说明存在一定的WAF
-![报错内容](images/2021-08-08-01-20-58.png)
+![报错内容](https://study-note-huang.oss-cn-beijing.aliyuncs.com/img/2021-08-08-01-20-58.png)
 - **关键:** 尝试将注入语句放到cookie中, 再发送给服务器, 因为网页防护一般只拦截Get、post传参. 这里用到了[ModHeader插件(新edge版本)](https://microsoftedge.microsoft.com/addons/detail/modheader/opgbiafapkbbnbnjcdomjaghbckfkglc?hl=zh-CN)(不喜欢用edge的也可以去找chrome版本)
 - 点击加号, 键入`Cookie`, `id=171`, 再将浏览器url中的参数删除
-![ModHeader](images/2021-08-08-01-31-17.png)
-![删除参数](images/2021-08-08-01-37-07.png)
+![ModHeader](https://study-note-huang.oss-cn-beijing.aliyuncs.com/img/2021-08-08-01-31-17.png)
+![删除参数](https://study-note-huang.oss-cn-beijing.aliyuncs.com/img/2021-08-08-01-32-08.png)
 - 发现能正常执行, 说明存在cookie注入
-![执行结果](images/2021-08-08-01-39-24.png)
+![执行结果](https://study-note-huang.oss-cn-beijing.aliyuncs.com/img/2021-08-08-01-39-24.png)
 - 这次在cookie中传入我们的注入语句, `id=171+union+select+1,2,3,4,5,6,7,8,9,10+from+admin`, 使用+代替空格, 否则报错, 原因**可能是后台进行了一次解码, 解码后`+`会变成空格**
-![注入结果](images/2021-08-08-01-41-51.png)
+![注入结果](https://study-note-huang.oss-cn-beijing.aliyuncs.com/img/2021-08-08-01-41-51.png)
 - 尝试查询`admin`表中最常见的字段`username`, `password`, `id=171+union+select+1,username,password,4,5,6,7,8,9,10+from+admin`, 拿到账户密码 

@@ -13,7 +13,7 @@
 docker search code-server
 ```
 
-![搜索结果如下](images/2021-08-07-13-13-04.png)
+![搜索结果如下](https://study-note-huang.oss-cn-beijing.aliyuncs.com/img/2021-08-07-13-13-04.png)
 
 拉取第一个官方镜像 
 
@@ -23,7 +23,7 @@ docker pull codercom/code-server
 # 查看是否拉取成功
 docker images
 ```
-![拉取结果](images/2021-08-07-13-19-59.png)
+![拉取结果](https://study-note-huang.oss-cn-beijing.aliyuncs.com/img/2021-08-07-13-19-59.png)
 
 - 运行code-server
 
@@ -39,13 +39,13 @@ docker run -d -u root -p 8080:8080 --name code-server -v /root/code:/home/code c
 
 输入ip:端口号, 进入code-server,就能愉快的使用浏览器写代码了 
 
-![访问](images/2021-08-07-13-27-45.png)
+![访问](https://study-note-huang.oss-cn-beijing.aliyuncs.com/img/2021-08-07-13-27-45.png)
 
 *由于code-server需要https才能启用webview功能, 导致了编写markdown时无法预览, 这也与我的核心述求相违背, 我也就没有用的亿元了, 在短暂的使用过程中, 基本上可以胜任简单的学习程度的编码, 对在校生来说, 是个好东西, ipad配个键盘就能玩* 
 
 - 安装插件
 
-![安装插件](images/2021-08-07-13-33-00.png)
+![安装插件](https://study-note-huang.oss-cn-beijing.aliyuncs.com/img/2021-08-07-13-33-00.png)
 
 可能是由于版权问题, 大部分vs code的插件, 在code-server的商店里都是不存在的, 即便存在版本也很低, 需要仔细去vs code的插件官网下在离线版本上传到服务器, 再通过vsix安装 
 
