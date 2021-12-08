@@ -1,0 +1,42 @@
+### CentOS7升级git版本
+
+CentOS7自带的git版本1.8.3.1太低, vscode会给出警告  
+使用`yum update git`命令无法更新成功, 还是1.8  
+
+网上提供的升级方案，其本上都是先删除原来的，然后在官网上下载最新的，自己make，make过程中容易报错，很麻烦。  
+
+新的思路:  
+
+1.切换root账户  
+```shell
+su root
+```
+
+2.配置存储库  
+```shell
+vim /etc/yum.repos.d/wandisco-git.repo
+```
+
+3.输入:  
+```shell
+[wandisco-git]
+name=Wandisco GIT Repository
+baseurl=http://opensource.wandisco.com/centos/7/git/$basearch/
+enabled=1
+gpgcheck=1
+gpgkey=http://opensource.wandisco.com/RPM-GPG-KEY-WANdisco
+```
+保存退出
+
+4.导入存储库GPG密钥:  
+```shell
+sudo rpm --import http://opensource.wandisco.com/RPM-GPG-KEY-WANdisco
+```
+
+5.安装git:  
+```shell
+yum install git
+```
+
+最后验证版本, 安装成功
+
