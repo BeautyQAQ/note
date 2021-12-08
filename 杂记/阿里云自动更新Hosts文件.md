@@ -45,3 +45,10 @@ hosts-tool recover first_backup
 # 完全卸载工具（恢复最后一次备份的hosts文件，推荐运行此卸载命令前先执行 hosts-tool run）
 hosts-tool recover uptodate_backup
 ```
+
+配置完成之后需要刷新dns:  
+```shell
+# centos刷新dns  先安装nscd
+yum install -y nscd     
+systemctl restart nscd
+```
