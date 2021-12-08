@@ -40,3 +40,31 @@ yum install git
 
 最后验证版本, 安装成功
 
+
+
+
+### remote: Support for password authentication was removed on August 13, 2021.
+
+解决方案 https://blog.csdn.net/weixin_41010198/article/details/119698015  
+
+忽略上述问题, 仍然使用SSH方式提交  
+
+配置好公钥后:  
+1.项目得使用 SSH clone
+2.git修改远程仓库地址  
+方法有三种:  
+```shell
+# 修改命令
+git remote origin set-url [url]
+
+# 先删后加
+git remote rm origin
+git remote add origin [url]
+
+# 直接修改config文件
+# git文件夹，找到config，编辑，把旧的项目地址替换成新的。
+```
+
+
+
+
