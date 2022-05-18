@@ -52,3 +52,23 @@ docker run -d -u root -p 8080:8080 --name code-server -v /root/code:/home/code l
 可能是由于版权问题, 大部分vs code的插件, 在code-server的商店里都是不存在的, 即便存在版本也很低, 需要仔细去vs code的插件官网下在离线版本上传到服务器, 再通过vsix安装 
 
 注意, 根据此文档安装的code-server, 离线安装插件时, 需要放在服务器的/root/code ,而在容器中到/home/code目录下安装插件
+
+
+
+
+```
+
+注册成功!
+
+你已成功注册你的密码和帐号
+
+帐号	goudingzi
+密码	yanhuayileng
+Email	2316849407@qq.com
+URL网址	http://39.108.138.56:8080/
+隐藏网址	no
+
+测试您的新域名: http://goudingzi.mycool.net
+
+
+```
