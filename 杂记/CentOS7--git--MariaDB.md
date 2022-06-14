@@ -104,4 +104,3 @@ mysql_secure_installation
 ```shell
 mysql -uroot -p    # <– 回车后输入密码
 ```
-         
