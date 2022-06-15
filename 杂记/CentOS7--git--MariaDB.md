@@ -104,3 +104,17 @@ mysql_secure_installation
 ```shell
 mysql -uroot -p    # <– 回车后输入密码
 ```
+
+配置远程登录
+```shell
+# 1、进入mysql数据库
+use mysql;
+# 2、查看权限情况
+select host,user,password from user;
+# 3、基于用户
+grant all privileges on *.* to root@'%'identified by 'root';
+# 4、基于IP
+grant all privileges on *.* to 'root'@'192.168.0.4'identified by '123456' with grant option;
+# 5、刷新权限
+flush privileges;
+```
