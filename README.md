@@ -7,7 +7,7 @@ version: '3'
 services:
   portainer:
     image: portainer/portainer-ce
-    container_name: myPortainer
+    container_name: portainer
     command: -H unix:///var/run/docker.sock
     restart: always
     ports:
@@ -36,5 +36,5 @@ services:
     ports:
       - 5432:5432
     volumes:
-      - /root/PostgreSQL/data:/var/lib/postgresql/data
+      - /usr/local/PostgreSQL/data:/var/lib/postgresql/data
 ```
