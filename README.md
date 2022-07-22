@@ -36,5 +36,5 @@ services:
     ports:
       - 5432:5432
     volumes:
-      - /usr/local/service/PostgreSQL/data:/var/lib/postgresql/data
+      - /usr/local/service/postgresql/data:/var/lib/postgresql/data
 ```
