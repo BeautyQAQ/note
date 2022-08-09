@@ -1,68 +1,66 @@
-### CentOS7升级git版本
-
-CentOS7自带的git版本1.8.3.1太低, vscode会给出警告  
-使用`yum update git`命令无法更新成功, 还是1.8  
-
-网上提供的升级方案，其本上都是先删除原来的，然后在官网上下载最新的，自己make，make过程中容易报错，很麻烦。  
-
-新的思路:  
-
-1.切换root账户  
+### 开启虚拟内存
+1.查看磁盘使用情况
 ```shell
-su root
+free -h 
 ```
 
-2.配置存储库  
+2、添加Swap分区
+使用dd命令创建名为swapfile 的swap交换文件（文件名和目录任意）:
 ```shell
-vim /etc/yum.repos.d/wandisco-git.repo
+dd  if=/dev/zero  of=/var/swapfile  bs=1024  count=4194304 
 ```
 
-3.输入:  
+3、对交换文件格式化并转换为swap分区
 ```shell
-[wandisco-git]
-name=Wandisco GIT Repository
-baseurl=http://opensource.wandisco.com/centos/7/git/$basearch/
-enabled=1
-gpgcheck=1
-gpgkey=http://opensource.wandisco.com/RPM-GPG-KEY-WANdisco
-```
-保存退出
-
-4.导入存储库GPG密钥:  
-```shell
-sudo rpm --import http://opensource.wandisco.com/RPM-GPG-KEY-WANdisco
+mkswap  /var/swapfile
 ```
 
-5.安装git:  
+4、挂载并激活分区
 ```shell
-yum install git
+swapon   /var/swapfile
+```
+执行以上命令可能会出现：“不安全的权限 0644，建议使用 0600”类似提示，不要紧张，实际上已经激活了，可以忽略提示，也可以听从系统的建议修改下权限：
+```shell
+chmod -R 0600 /var/swapfile
 ```
 
-最后验证版本, 安装成功
-
-
-
-
-### remote: Support for password authentication was removed on August 13, 2021.
-
-解决方案 https://blog.csdn.net/weixin_41010198/article/details/119698015  
-
-忽略上述问题, 仍然使用SSH方式提交  
-
-配置好公钥后:  
-1.项目得使用 SSH clone
-2.git修改远程仓库地址  
-方法有三种:  
+5、查看新swap分区是否正常添加并激活使用
 ```shell
-# 修改命令
-git remote origin set-url [url]
+free -h 
+```
 
-# 先删后加
-git remote rm origin
-git remote add origin [url]
+6.下面我们查看当前的swappiness数值：
+```shell
+cat /proc/sys/vm/swappiness
+```
 
-# 直接修改config文件
-# git文件夹，找到config，编辑，把旧的项目地址替换成新的。
+7.修改swappiness值，这里以10为例：
+```shell
+sysctl vm.swappiness=10
+```
+
+8.设置永久有效，重启系统后生效
+```shell
+echo "vm.swappiness = 10"  >>  /etc/sysctl.conf
+```
+
+9.swap分区的删除:停止正在使用swap分区
+```shell
+swapoff  /var/swapfile
+```
+
+
+10.删除swap分区文件
+```shell
+rm -rf   /var/swapfile
+```
+
+11.删除或注释掉我们之前在fstab文件里追加的开机自动挂载配置内容
+```shell
+vim    /etc/fstab
+
+#把下面内容删除
+/var/swapfile   swap  swap  defaults  0  0
 ```
 
 ### centos7安装自带的mariadb
