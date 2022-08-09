@@ -1,3 +1,39 @@
+## 配置
+
+1.配置邮箱
+
+```shell
+git config --global user.name "huangshen"
+git config --global user.email  "1426887150@qq.com"
+```
+
+2.进入ssh页面查看·
+
+```shell
+cd ~/.ssh
+ls
+```
+
+3.生产SSH Key
+
+```shell
+ssh-keygen -t rsa -C "1426887150@qq.com"
+```
+
+4.拷贝秘钥 ssh-rsa开头
+
+```shell
+cat id_rsa.pub
+```
+
+5.测试
+
+```shell
+ssh -T git@github.com
+//运行结果出现类似如下
+Hi xiangshuo1992! You've successfully authenticated, but GitHub does not provide shell access.
+```
+
 ## 设置代理
 
 1.http || https协议
