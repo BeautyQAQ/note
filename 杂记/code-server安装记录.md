@@ -45,7 +45,7 @@ docker run -d -u root -p 8080:8080 --name code-server -v /root/code:/home/code l
 mkdir -p ~/.config
 mkdir -p ~/code-server/project
 
-docker run -d -u root -p 8080:8080 --name code-server -v /root/code:/home/code -v /root/code-server/project:/home/coder/project -v /root/.config:/home/coder/.config codercom/code-server
+docker run -d -u root -p 8080:8080 --name code-server -v /root/code:/home/code -v /root/code-server/project:/home/coder/project -v /root/.config:/root/.config codercom/code-server
 ```
 
 这样配置启动后密码会在`/root/.config/code-server/config.yaml`文件中，密码可以修改
