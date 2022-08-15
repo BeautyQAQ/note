@@ -1,10 +1,10 @@
-## code-server安装
+## code-server 安装
 
-**这里使用的是docker安装的方式** 
+**这里使用的是 docker 安装的方式**
 
-[docker安装](https://www.runoob.com/docker/centos-docker-install.html) 
+[docker 安装](https://www.runoob.com/docker/centos-docker-install.html)
 
-### code-server安装步骤
+### code-server 安装步骤
 
 - 搜索镜像
 
@@ -15,7 +15,7 @@ docker search code-server
 
 ![搜索结果如下](https://study-note-huang.oss-cn-beijing.aliyuncs.com/img/2021-08-07-13-13-04.png)
 
-拉取第一个官方镜像 
+拉取第一个官方镜像
 
 ```shell
 # 拉取镜像
@@ -24,9 +24,10 @@ docker pull linuxserver/code-server
 # 查看是否拉取成功
 docker images
 ```
+
 ![拉取结果](https://study-note-huang.oss-cn-beijing.aliyuncs.com/img/2021-08-07-13-19-59.png)
 
-- 运行code-server
+- 运行 code-server
 
 ```shell
 # -d 后台运行
@@ -41,6 +42,7 @@ docker run -d -u root -p 8080:8080 --name code-server -v /root/code:/home/code l
 ```
 
 - 更合理的启动方式
+
 ```shell
 mkdir -p ~/.config
 mkdir -p ~/code-server/project
@@ -50,18 +52,32 @@ docker run -d -u root -p 8080:8080 --name code-server -v /root/code:/home/code -
 
 这样配置启动后密码会在`/root/.config/code-server/config.yaml`文件中，密码可以修改
 
-输入ip:端口号, 输入配置文件中的密码, 进入code-server,就能愉快的使用浏览器写代码了 
+输入 ip:端口号, 输入配置文件中的密码, 进入 code-server,就能愉快的使用浏览器写代码了
 
 ![访问](https://study-note-huang.oss-cn-beijing.aliyuncs.com/img/2021-08-07-13-27-45.png)
 
-使用 **ssh -N -L 8080:127.0.0.1:8080 [user]@[instance-ip]** 命令可以预览web视图
+使用 **ssh -N -L 8080:127.0.0.1:8080 [user]@[instance-ip]** 命令可以预览 web 视图
 
-*由于code-server需要https才能启用webview功能, 导致了编写markdown时无法预览, 这也与我的核心述求相违背, 我也就没有用的意愿了, 在短暂的使用过程中, 基本上可以胜任简单的学习程度的编码, 对在校生来说, 是个好东西, ipad配个键盘就能玩* 
+_由于 code-server 需要 https 才能启用 webview 功能, 导致了编写 markdown 时无法预览, 这也与我的核心述求相违背, 我也就没有用的意愿了, 在短暂的使用过程中, 基本上可以胜任简单的学习程度的编码, 对在校生来说, 是个好东西, ipad 配个键盘就能玩_
 
 - 安装插件
 
 ![安装插件](https://study-note-huang.oss-cn-beijing.aliyuncs.com/img/2021-08-07-13-33-00.png)
 
-可能是由于版权问题, 大部分vs code的插件, 在code-server的商店里都是不存在的, 即便存在版本也很低, 需要仔细去vs code的插件官网下在离线版本上传到服务器, 再通过vsix安装 
+可能是由于版权问题, 大部分 vs code 的插件, 在 code-server 的商店里都是不存在的, 即便存在版本也很低, 需要仔细去 vs code 的插件官网下在离线版本上传到服务器, 再通过 vsix 安装
 
-注意, 根据此文档安装的code-server, 离线安装插件时, 需要放在服务器的/root/code ,而在容器中到/home/code目录下安装插件
+注意, 根据此文档安装的 code-server, 离线安装插件时, 需要放在服务器的/root/code ,而在容器中到/home/code 目录下安装插件
+
+- 配置使用 vscode 原生插件市场地址
+
+编辑文件`/usr/lib/code-server/lib/vscode/product.json`,如果文件中没有这个对象，就新增一个
+
+```json
+  "extensionsGallery": {
+    "serviceUrl": "https://marketplace.visualstudio.com/_apis/public/gallery",
+    "cacheUrl": "https://vscode.blob.core.windows.net/gallery/index",
+    "itemUrl": "https://marketplace.visualstudio.com/items",
+    "controlUrl": "",
+    "recommendationsUrl": ""
+  }
+```
