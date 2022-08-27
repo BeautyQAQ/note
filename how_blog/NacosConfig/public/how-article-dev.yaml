@@ -1,0 +1,29 @@
+server:
+  port: 9004
+spring:
+  application:
+    name: how-article #指定服务名
+  datasource:
+    driverClassName: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://mysql:3306/how_article?characterEncoding=utf-8
+    username: root
+    password: root
+  jpa:
+    database: MySQL
+    show-sql: true
+
+  # nacos服务地址
+  cloud:
+    nacos:
+      discovery:
+        server-addr: nacos:8848
+
+  redis:
+    host: redis
+  data:
+    mongodb:
+      host: 111.111.111.111
+      database: commentdb
+
+
+# 111.111.111.111  阿里云服务器地址

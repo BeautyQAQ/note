@@ -1,0 +1,20 @@
+server:
+  port: 9006
+
+spring:
+  application:
+    name: how-spit #指定服务名
+  data:
+    mongodb:
+      host: 11.11.11.11
+      database: spitdb
+
+  redis:
+    host: 111.11.11.11
+
+  # nacos服务地址
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 111.11.11.11:8848
+        namespace: dev

@@ -1,0 +1,14 @@
+server:
+  port: 9007
+spring:
+  application:
+    name: how-search #指定服务名
+  data:
+    elasticsearch:
+      cluster-nodes: 111.11.11.11:9300
+
+  # nacos服务地址
+  cloud:
+    nacos:
+      discovery:
+        server-addr: nacos:8848
