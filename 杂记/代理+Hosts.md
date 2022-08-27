@@ -1,4 +1,4 @@
-### 阿里云自动更新Hosts文件, 解决无法访问GitHub的问题
+### 自动更新Hosts文件, 解决无法访问GitHub的问题
 
 1.进入[GitHub520](https://github.com/521xueweihan/GitHub520)项目, 里面的hosts文件实时更新, windows、Linux、MAC通用  
 2.进入[AUTO_UPDATE_GITHUB_HOSTS](https://github.com/mylovesaber/auto_update_github_hosts)项目([Gitee地址](https://gitee.com/mylovesaber/auto_update_github_hosts))项目, 这里可以配置Linux自动更新hosts文件的脚本  
@@ -53,7 +53,7 @@ yum install -y nscd
 systemctl restart nscd
 ```
 
-### 阿里云代理服务器搭建
+### shadowsocks代理服务器搭建
 
 1.运行命令
 

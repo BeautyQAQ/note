@@ -15,7 +15,7 @@ services:
       - 8000:8000
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
-      - portainer_data:/data portainer/portainer-ce
+      - /usr/local/service/portainer/portainer_data:/data portainer/portainer-ce
 
 volumes:
   portainer_data:
@@ -36,5 +36,5 @@ services:
     ports:
       - 5432:5432
     volumes:
-      - /usr/local/PostgreSQL/data:/var/lib/postgresql/data
+      - /usr/local/service/postgresql/data:/var/lib/postgresql/data
 ```
