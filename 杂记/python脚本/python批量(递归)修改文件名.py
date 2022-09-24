@@ -1,7 +1,8 @@
 import os
 
 def isFile(filePath):#修改文件扩展名
-    filename=filePath.split('\\')[-1]#拆分文件路径获得文件名
+    #拆分文件路径获得文件名
+    filename=filePath.split('\\')[-1]
     # 打印文件名
     print("修改前文件名:"+filename)
     fatherPath=filePath.replace(filename,'')#获得父级路径
