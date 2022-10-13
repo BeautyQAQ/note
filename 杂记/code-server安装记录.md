@@ -68,9 +68,14 @@ _由于 code-server 需要 https 才能启用 webview 功能, 导致了编写 ma
 
 注意, 根据此文档安装的 code-server, 离线安装插件时, 需要放在服务器的/root/code ,而在容器中到/home/code 目录下安装插件
 
+
+## 建议使用解压安装的方式，方便使用开发环境
+
 - 配置使用 vscode 原生插件市场地址
 
-编辑文件`/usr/lib/code-server/lib/vscode/product.json`,如果文件中没有这个对象，就新增一个
+rpm安装：编辑文件`/usr/lib/code-server/lib/vscode/product.json`,如果文件中没有这个对象，就新增一个  
+
+解压安装：在解压的安装目录下：`code-server/lib/vscode/product.json`,如果文件中没有这个对象，就新增一个  
 
 ```json
   "extensionsGallery": {
