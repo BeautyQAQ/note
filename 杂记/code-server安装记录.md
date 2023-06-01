@@ -86,3 +86,8 @@ rpm安装：编辑文件`/usr/lib/code-server/lib/vscode/product.json`,如果文
     "recommendationsUrl": ""
   }
 ```
+
+
+百度云控制台：
+Cockpit 是一个交互式 Linux 服务器管理接口。
+https://cockpit-project.org/
