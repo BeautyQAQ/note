@@ -1,0 +1,37 @@
+<html>
+<div id="myDiv"></div>
+
+</html>
+<script>
+    function createSelectList() {
+        // 获取id为myDiv的元素
+        const myDiv = document.getElementById('myDiv');
+
+        // 创建一个select元素
+        const selectList = document.createElement('select');
+        selectList.setAttribute('id', 'mySelect');
+
+        // 创建三个option元素，并添加到select中
+        const option1 = document.createElement('option');
+        option1.setAttribute('value', 'option1');
+        option1.text = '选项1';
+        selectList.appendChild(option1);
+
+        const option2 = document.createElement('option');
+        option2.setAttribute('value', 'option2');
+        option2.text = '选项2';
+        selectList.appendChild(option2);
+
+        const option3 = document.createElement('option');
+        option3.setAttribute('value', 'option3');
+        option3.text = '选项3';
+        selectList.appendChild(option3);
+
+        // 将select添加到myDiv中
+        myDiv.appendChild(selectList);
+    }
+
+    // 调用函数
+    createSelectList();
+
+</script>
