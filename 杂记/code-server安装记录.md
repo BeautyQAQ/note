@@ -87,6 +87,37 @@ rpm安装：编辑文件`/usr/lib/code-server/lib/vscode/product.json`,如果文
   }
 ```
 
+后台启动命令：nohup ./code-server  > /dev/null 2>&1 &
+保持关闭shell终端后继续运行：
+在这种情况下，应该使用 `disown` 命令。`disown` 是 shell 内置命令，用于从当前 shell 的作业表中删除作业，从而使得这个作业在 shell 退出时不会受到挂断（HUP）信号的影响。
+
+以下是相应的步骤：
+
+1. 运行 `code-server` 并将其放到后台：
+
+    ```bash
+    nohup ./code-server  > /dev/null 2>&1 &
+    ```
+
+2. 找到 `code-server` 的进程 ID（PID）。可以使用 `jobs -l` 命令来查看：
+
+    ```bash
+    jobs -l
+    ```
+
+    这将列出当前 Shell 启动的所有后台进程。找到 `code-server` 的 PID，它应该是一个数字。
+
+3. 使用 `disown` 命令来让 `code-server` 在退出 Shell 后继续运行：
+
+    ```bash
+    disown -h <PID>
+    ```
+
+    在这里，`<PID>` 是在第二步找到的 `code-server` 的 PID。
+
+现在，即使退出 Shell，`code-server` 也应该会继续在后台运行。
+
+
 配置文件位置：`/root/.config/code-server`
 配置文件内容：
 ```config
