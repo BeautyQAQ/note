@@ -31,7 +31,7 @@ cat id_rsa.pub
 ```shell
 ssh -T git@github.com
 //运行结果出现类似如下
-Hi xiangshuo1992! You've successfully authenticated, but GitHub does not provide shell access.
+Hi BeautyQAQ! You've successfully authenticated, but GitHub does not provide shell access.
 ```
 
 ### CentOS7升级git版本
